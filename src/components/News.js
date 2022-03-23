@@ -37,7 +37,7 @@ const News = (props)=>{
 
 
     const fetchMoreData = async () => {   
-        const url = `http://api.mediastack.com/v1/news?access_key=${props.apiKey}&countries=${props.country}&categories=${props.category}&offset=${page+10}&limit=${props.pageSize}&languages=en&sort=published_desc`;
+        const url = `http://api.mediastack.com/v1/news?access_key=${props.apiKey}&countries=${props.country}&categories=${props.category}&offset=${page+1}&limit=${props.pageSize}&languages=en&sort=published_desc`;
         setPage(page+1) 
         let data = await fetch(url);
         let parsedData = await data.json()
@@ -47,7 +47,7 @@ const News = (props)=>{
  
         return (
             <>
-                <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>NewsMonkey - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
+                <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>Instant News - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
                 {loading && <Spinner />}
                 <InfiniteScroll
                     dataLength={articles.length}
@@ -63,7 +63,7 @@ const News = (props)=>{
                             // eslint-disable
                                 return <div className="col-md-4" key={element.id}>
                                                              
-                                <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.image} newsUrl={element.url} author={element.author} date={element.published_at} source={element.source} />
+                                <NewsItem key={element.id} title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.image} newsUrl={element.url} author={element.author} date={element.published_at} source={element.source} />
                             </div>
                         })}
                     </div>

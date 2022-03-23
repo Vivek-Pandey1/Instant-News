@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
 
 const App = ()=> {
-  const pageSize = 6;
+  const pageSize = 20;
   // const apiKey = '6d47e6d856e14be0982b134bf4310923'
   const apiKey = '0840640d5c1deb83c95cb572870e54ce'
   const [progress, setProgress] = useState(0)
